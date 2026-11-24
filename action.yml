@@ -1,0 +1,17 @@
+name: devpulse
+description: Engineering health gate from git history (bus factor, hotspots, recency)
+branding: { icon: activity, color: purple }
+inputs:
+  command:
+    description: "report or check"
+    default: check
+  args:
+    description: Extra arguments, e.g. "--since '6 months ago'"
+    default: ""
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.command }}
+    - --repo
+    - /github/workspace
