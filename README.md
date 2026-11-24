@@ -9,18 +9,20 @@ change most and hurt most (hotspots), shows who owns what, computes the
 **bus factor**, and turns all of it into a 0–100 health score you can gate CI on.
 
 ```text
-$ devpulse report --since "6 months ago" --top 5
-devpulse · payments-api
-health score 71/100  ·  bus factor 2
+$ devpulse report --since 2024-01-01 --top 5      # run on the ripgrep repository
+devpulse · ripgrep
+health score 69/100  ·  bus factor 1
 
-1,284 commits · 9 authors · 412 files · +88,410 −51,207 · 2026-05-24 → 2026-11-23 (131 active days)
+407 commits · 168 authors · 151 files · +14200 −5258 · 2023-12-11 → 2026-11-22 (165 days active)
 
 Hotspots
-  file                          commits  churn  owner   owned
-  src/billing/invoice.rs        96       7412   Aziza   81%
-  src/billing/proration.rs      61       3990   Aziza   92%
-  src/api/routes.rs             88       2214   Timur   44%
-  ...
+  file                                commits  churn  owner            owned
+  CHANGELOG.md                        56       358    Andrew Gallant   76%
+  crates/core/flags/defs.rs           29       1383   Andrew Gallant   60%
+  tests/regression.rs                 31       823    Andrew Gallant   48%
+  crates/ignore/src/default_types.rs  37       79     Adhvik Kanagala  15%
+  crates/globset/src/lib.rs           21       688    Thayne McCombs   39%
+...
 ```
 
 ## Why
@@ -166,6 +168,17 @@ release binaries for five targets with SHA-256 checksums.
 - Per-directory ownership and team mapping via CODEOWNERS
 - Trend mode comparing two periods
 - Incremental cache for very large monorepos
+
+## Documentation
+
+| Document | Contents |
+|---|---|
+| [Product](docs/product.md) | Vision, business problem, business and technical requirements, workflows |
+| [Engineering](docs/engineering.md) | Boundaries, security, performance, observability, DR, DevOps, testing |
+| [Roadmap](docs/roadmap.md) | Ten milestones and the release plan |
+| [CTO review checklist](docs/cto-review-checklist.md) | Honest status against production-readiness criteria |
+| [ADRs](docs/adr) | Architecture decisions |
+| [Contributing](CONTRIBUTING.md) | Branching, commits, labels, board, releases |
 
 ## License
 
