@@ -15,7 +15,7 @@ pub fn render(r: &Report<'_>) -> String {
     );
     let _ = writeln!(
         out,
-        "{} · {} · {} · +{} −{} · {} → {} ({} active days)\n",
+        "{} · {} · {} · +{} −{} · {} → {} ({} active)\n",
         plural(s.commits, "commit"),
         plural(s.authors, "author"),
         plural(s.files_touched, "file"),
@@ -23,7 +23,7 @@ pub fn render(r: &Report<'_>) -> String {
         s.lines_deleted,
         date(s.first_commit),
         date(s.last_commit),
-        s.active_days
+        plural(s.active_days, "day")
     );
 
     out.push_str("Hotspots\n");
